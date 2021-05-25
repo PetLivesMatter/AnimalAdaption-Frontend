@@ -1,0 +1,16 @@
+<div class="list-group">
+  
+    <a href="#" class="list-group-item list-group-item-action active" aria-current="true"> Kategoriler</a>
+    <a href="#" class="list-group-item list-group-item-action"> Fil</a>
+    <a href="#" class="list-group-item list-group-item-action">Gecko</a>
+    <a href="#" class="list-group-item list-group-item-action">Kedi</a>
+    
+  </div>
+  <ul class="list-group">
+    <li (click)="setCurrentAnimalType(animalType)" 
+    routerLink="/products/category/{{animalType.AnimalTypesId }}"
+    *ngFor="let animalType of animalTypes"
+     [class]="getCurrentAnimalTypeClass(animalType) ">{{animalType.AnimalTypesName}}</li>
+    
+  </ul> 
+  <h5 *ngIf=" currentAnimalType">{{ currentAnimalType.AnimalTypesName}} seçtiniz</h5>
