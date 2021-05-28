@@ -17,9 +17,9 @@ export class AnimalTypeComponent implements OnInit {
     this.getAnimalTypes();
   }
   getAnimalTypes(){
-    this.animalTypeService.getAnimalTypes().subscribe(response=>{
-      this.animalTypes = response.data
-      })
+    // this.animalTypeService.getAnimalTypes().subscribe(response=>{
+    //   this.animalTypes = response.data
+    //   })
   }
   setCurrentAnimalType(animalType:animalType){
     this.currentAnimalType = animalType;

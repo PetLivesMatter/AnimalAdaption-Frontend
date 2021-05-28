@@ -1,5 +1,7 @@
 export interface registerModel{
     email:string;
     password:string;
-    name:string;
+    firstName:string;
+    lastName:string;
+    
 }

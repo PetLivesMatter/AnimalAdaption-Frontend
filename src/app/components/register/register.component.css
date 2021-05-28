@@ -15,7 +15,10 @@ body {
   justify-content: center;
   padding-top: 40px;
   padding-bottom: 40px;
-  background-color: #f5f5f5;
+
+  background-color: #fff;
+  background-image: url('https://i.hizliresim.com/faf0s6n.jpg');
+  background-size: cover;
 }
 
 .form-signin {
@@ -23,6 +26,10 @@ body {
   max-width: 330px;
   padding: 15px;
   margin: 0 auto;
+  background: #fff;
+  border-radius: 10px;
+  padding: 23px;
+  text-align: left;
 }
 .form-signin .checkbox {
   font-weight: 400;
@@ -46,4 +53,9 @@ body {
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+
+label {
+  padding: 10px 0px 5px 0px;
+  font-weight: 500;
 }

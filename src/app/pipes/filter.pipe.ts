@@ -8,7 +8,7 @@ export class FilterPipe implements PipeTransform {
 
   transform(value: Animal[], filterText: string): Animal[] {
     filterText = filterText?filterText.toLocaleLowerCase():"n"
-    return filterText?value.filter((a:Animal)=>a.AnimalName.toLocaleLowerCase().indexOf(filterText)!==-1):value;
+    return filterText?value.filter((a:Animal)=>a.animalName.toLocaleLowerCase().indexOf(filterText)!==-1):value;
   }
 
 }

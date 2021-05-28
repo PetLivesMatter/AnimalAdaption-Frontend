@@ -2,6 +2,7 @@ import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { Animal } from 'src/app/models/animal';
 import { AnimalService } from 'src/app/services/animal.service';
 
 @Component({
@@ -14,15 +15,30 @@ export class AdvertisimentComponent implements OnInit {
   constructor(private formBuilder:FormBuilder,private animalService:AnimalService,private toastrService:ToastrService) { }
 
   ngOnInit(): void {
+    this.createAdvertisimentAddForm()
   }
   createAdvertisimentAddForm(){
     this.adversitimentAddForm=this.formBuilder.group({
-      AnimalName:["",Validators.required],  
-      AnimalTypeId:["",Validators.required]
+      animalName:["",Validators.required],  
+      animalTypeId:["",Validators.required],
+      animalGender:["",Validators.required],
+      animalAge:["",Validators.required],
+      address:["",Validators.required]
     })
   }
   add(){
-    console.log("hata eklendi")
+    console.log(this.adversitimentAddForm.value)
+    if(this.adversitimentAddForm.valid){
+      let animal:Animal = this.adversitimentAddForm.value
+      this.animalService.addAnimal(animal).subscribe((data)=>{
+        console.log(data)
+      }, (error)=>{
+        console.log(error)
+      })
+    }
+
+
+
     /*çöz burayı angular 5 !
      if(this.adversitimentAddForm.valid){
       let animalModel = Object.assign({},this.adversitimentAddForm.value)

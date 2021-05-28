@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import{FormGroup,FormControl,Validators,FormBuilder} from "@angular/forms";
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { LoginModel } from 'src/app/models/loginModel';
 import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-login',
@@ -9,7 +11,8 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginComponent implements OnInit {
   loginForm:FormGroup;
-  constructor(private formBuilder:FormBuilder,private authService:AuthService,private toastrService:ToastrService) { }
+  constructor(private formBuilder:FormBuilder,private authService:AuthService,private toastrService:ToastrService,
+    private routerService:Router) { }
 
   ngOnInit(): void {
     this.createLoginForm();
@@ -22,17 +25,20 @@ export class LoginComponent implements OnInit {
   }
   login(){
     if(this.loginForm.valid){
-      console.log(this.loginForm.value);
-      let loginModel = Object.assign({},this.loginForm.value)
-      this.authService.login(loginModel).subscribe(response=>{
-        this.toastrService.info(response.message)
-        localStorage.setItem("token",response.data.token) //servis yapalım
+     let loginModel:LoginModel=this.loginForm.value
+      this.authService.login(loginModel).subscribe((data)=>{
+        //console.log(data)
+        localStorage.setItem("token",data.token);
+        //localStorage.setItem("userId",data.id);
+        this.toastrService.success("giriş yapıldı","başarılı")
+        this.routerService.navigate(["/"])
+
         
-      },responseError=>{
-        //console.log(responseError)
-        this.toastrService.error(responseError.console.error);
-        
+      },(error)=>{
+        this.toastrService.error("giriş yapılamadı","başarısız")
       })
+        
+      
     }
   }
 

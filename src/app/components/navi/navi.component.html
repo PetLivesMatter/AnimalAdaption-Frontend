@@ -18,18 +18,21 @@
             <a class="nav-link active btn " aria-current="page" (click)="home()">Anasayfa</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page">İlanlar</a>
+            <a class="nav-link active btn" aria-current="page" >Türler hakkında bilgiler</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active"  tabindex="-1" aria-disabled="true">Türler hakkında bilgiler</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active"  tabindex="-1" aria-disabled="false">Sorular</a>
+            <a class="nav-link active btn" aria-current="page" (click)="question()">Sorular</a>
           </li>
         </ul>
+        <div class="d-flex   mx-3">
+          <button class="btn btn-outline-warning" (click)="register()" >
+            
+            Kayıt ol  </button>
+         
+        </div>
         <div class="d-flex">
           <button class="btn btn-outline-info " (click)="login()" >
-            <img src="https://www.petcim.com/images/loginss.png " alt="">
+           
             
             Giriş yap</button>
          

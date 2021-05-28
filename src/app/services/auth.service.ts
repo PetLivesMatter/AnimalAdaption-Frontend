@@ -11,13 +11,14 @@ import { TokenModel } from '../models/tokenModel';
 })
 export class AuthService {
   //link hatalı olabilir
-  apiUrl = 'https://localhost:44391/api/auth';
+  apiUrl = 'https://localhost:44335/api/auth';
   constructor(private httpClient:HttpClient) { }
-  login(loginModel:LoginModel){
-    return this.httpClient.post<SingleResponseModel<TokenModel>>(this.apiUrl+"/login",loginModel)
+  login(loginModel:LoginModel):Observable<TokenModel>{
+    return this.httpClient.post<TokenModel>(this.apiUrl+"/login",loginModel)
   }
-  register(registerModel:registerModel){
-    return this.httpClient.post(this.apiUrl+"/register",registerModel)
+  register(registerModel:registerModel):Observable<TokenModel>{
+    let newPath=this.apiUrl+"/register"
+    return this.httpClient.post<TokenModel>(newPath,registerModel)
   }
   isAuthenticated(){
     if(localStorage.getItem("token")){

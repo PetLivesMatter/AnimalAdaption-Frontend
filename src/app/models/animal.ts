@@ -1,9 +1,9 @@
 export interface Animal{
-    AnimalId:number;
-    AnimalTypesId:number;
-    AnimalName:string;
-    AnimalWeight:number;
-    AnimalGender:string;
-    AnimalAge:number;
-    AnimalImage:string;
+    animalId:number;
+    animalTypesId:number;
+    address:string;
+    animalName:string;
+    animalGender:string;
+    animalAge:string;
+    
 }

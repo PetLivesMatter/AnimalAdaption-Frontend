@@ -10,11 +10,11 @@ import { AnimalTypeComponent } from './components/animal-type/animal-type.compon
 import { FilterPipe } from './pipes/filter.pipe';
 import { AdvertisimentComponent } from './components/advertisiment/advertisiment.component';
 import{BrowserAnimationsModule} from "@angular/platform-browser/animations"
-
 import{ToastrModule} from "ngx-toastr";
 import { LoginComponent } from './components/login/login.component'
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { RegisterComponent } from './components/register/register.component';
+import { QuestionComponent } from './components/question/question.component';
 
 
 @NgModule({
@@ -27,6 +27,7 @@ import { RegisterComponent } from './components/register/register.component';
     AdvertisimentComponent,
     LoginComponent,
     RegisterComponent,
+    QuestionComponent,
     
     
   ],

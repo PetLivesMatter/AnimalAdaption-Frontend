@@ -3,12 +3,24 @@
   <span class="visually-hidden">Loading...</span>
 </div>
 -->
-<div class="mb-3">
+<!--<div class="mb-3 ">
   <label for="filterText" class="form-label">Evcil hayvan ilanı ara</label>
   <input type="text"[(ngModel)]="filterText" class="form-control" id="filterText" placeholder="arama ifadesi giriniz">
 </div>
 <div *ngIf="filterText.length>2" class="alert alert-success">
   {{filterText}} aradınız.
+</div>
+-->
+<div class="row">
+  <div class="mb-3 " >
+    <button type="button" class="btn btn-primary rounded mx-2 my-2 col-md-2" (click)="rotatingAdvertisiment()" data-toggle="modal" data-target="#operationAddModel"
+    >İlan ekle</button> 
+    
+  </div>
+</div>
+
+<div *ngFor="let animal of Animals">
+  {{animal.animalName}}
 </div>
 
 <div class="row">
@@ -20,4 +32,10 @@
  </div>
  <div class="row">
      ramazan reistir ÜSTAD
+
+  
+
   </div>
+
+
+  

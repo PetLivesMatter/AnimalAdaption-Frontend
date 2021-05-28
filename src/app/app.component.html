@@ -1,12 +1,12 @@
 <app-navi></app-navi>
-<div class="container">
+<div class="container pt-5 mx-auto">
     <div class="row">
         
-        <div class="col-md-3">
+        <div class="col-md-3" *ngIf="isLoginContainer">
              <app-animal-type></app-animal-type>
         </div>
 
-        <div class="col-md-9">
+        <div [ngClass]="isLoginContainer ? 'col-md-9' : 'col-md-12'">
            <router-outlet></router-outlet>
         </div>
     </div>

@@ -18,4 +18,10 @@ export class NaviComponent implements OnInit {
   login(){
     this.router.navigate(["login"])
   }
+  register(){
+    this.router.navigate(["register"])
+  }
+  question(){
+    this.router.navigate(["question"])
+  }
 }

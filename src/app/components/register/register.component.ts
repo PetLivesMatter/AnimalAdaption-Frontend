@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { registerModel } from 'src/app/models/registerModel';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 @Component({
@@ -12,7 +15,10 @@ export class RegisterComponent implements OnInit {
   registerForm:FormGroup
   constructor(
     private formBuilder:FormBuilder,
-    private router:Router
+    private routerService:Router,
+    private authService:AuthService,
+    private toastrService:ToastrService
+
   ) { }
 
   ngOnInit(): void {
@@ -20,16 +26,27 @@ export class RegisterComponent implements OnInit {
   }
   createRegisterForm(){
     this.registerForm=this.formBuilder.group({
-      name:["",Validators.required],
+      firstName:["",Validators.required],
+      lastName:["",Validators.required],
       email:["",Validators.required],
       password:["",Validators.required]
     })
   }
   register(){
     if(this.registerForm.valid){
-      console.log(this.registerForm.value)
-    }else{
-      console.log("başaramadık")
+     let registerModel:registerModel=this.registerForm.value
+      this.authService.register(registerModel).subscribe((data)=>{
+        //console.log(data)
+        localStorage.setItem("token",data.token)
+        this.toastrService.success("kayıt olundu "," kayıt başarılı")
+        this.routerService.navigate(["/"])
+
+        
+      },(error)=>{
+        this.toastrService.error("kayıt yapılamadı","kayıt başarısız")
+      })
+        
+      
     }
   }
 

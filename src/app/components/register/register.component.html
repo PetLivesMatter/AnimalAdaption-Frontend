@@ -1,11 +1,12 @@
 <body class="text-center">
-    <form  [formGroup]="registerForm"class="form-signin">
-      <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+    <form  [formGroup]="registerForm" class="form-signin">
       <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
       <label for="inputEmail" class="sr-only">Email address</label>
       <input formControlName="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
       <label for="inputName" class="sr-only">İsim </label>
-      <input formControlName="name"type="text" id="inputName" class="form-control" placeholder="İsminizi giriniz" required autofocus>
+      <input formControlName="firstName"type="text" id="inputName" class="form-control" placeholder="İsminizi giriniz" required autofocus>
+      <label for="inputName" class="sr-only">Soyİsim </label>
+      <input formControlName="lastName"type="text" id="inputLastName" class="form-control" placeholder="Soy İsminizi giriniz" required autofocus>
       <label for="inputPassword" class="sr-only">Şifre</label>
       <input formControlName="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
      
