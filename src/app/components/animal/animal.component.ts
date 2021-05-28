@@ -11,6 +11,7 @@ import { AnimalService } from 'src/app/services/animal.service';
 export class AnimalComponent implements OnInit {
   Animals:Animal[]=[];
   dataLoaded=false;
+  filterText="";
   constructor(private animalService:AnimalService, 
     private activatedRoute:ActivatedRoute) { }
 

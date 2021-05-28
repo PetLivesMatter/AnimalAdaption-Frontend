@@ -1,5 +1,5 @@
 export interface animalType{
-    categoryId:number;
-    categoryName:string;
+    animalTypeId:number;
+    animalTypeName:string;
     Description:string;
 }

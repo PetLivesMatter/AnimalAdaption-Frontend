@@ -1,8 +1,16 @@
+<!--
+  <div  *ngIf="dataLoaded==false" class="spinner-border text-info" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+-->
 <div class="mb-3">
-    <label for="exampleFormControlInput1" class="form-label">Email address</label>
-    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-  </div>
-  
+  <label for="filterText" class="form-label">Evcil hayvan ilanı ara</label>
+  <input type="text"[(ngModel)]="filterText" class="form-control" id="filterText" placeholder="arama ifadesi giriniz">
+</div>
+<div *ngIf="filterText.length>2" class="alert alert-success">
+  {{filterText}} aradınız.
+</div>
+
 <div class="row">
     <div class="col" >  <img width="100%"  src="./assets/doglivesmater.webp"></div>
     <div class="col" >  <img width="100%"  src="./assets/doglivesmater.webp"></div>

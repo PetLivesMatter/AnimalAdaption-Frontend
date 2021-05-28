@@ -8,7 +8,7 @@ import { animalType } from '../models/animalType';
   providedIn: 'root'
 })
 export class AnimalTypeService {
-  apiUrl=""; //buraya link eklicezssd
+  apiUrl="https://localhost:44391/"; //buraya link eklicezssd
 
   constructor(private httpClient: HttpClient) { }
   getAnimalTypes():Observable<ListResponseModel<animalType>>{

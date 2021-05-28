@@ -1,0 +1,76 @@
+<div class="content">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header"><h5 class="title"> İlan ekle </h5></div>
+            <div class="card-body">
+                <form [formGroup]="adversitimentAddForm">
+                    <div class="mb-3">
+                        <label for="animalName">Pet adı</label>
+                        <div class="form-group">
+                            <input type="text"
+                            id="animalName" 
+                            formControlName="animalName" class="form-control" 
+                            placeholder="Pet Adı"/>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="animalType">Pet türü </label>
+                        <div class="form-group">
+                            <input type="text"
+                            id="animalTypeId" 
+                            formControlName="animalTypeId" class="form-control" 
+                            placeholder="Pet türü "/>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="animalWeight">Pet Kilo </label>
+                        <div class="form-group">
+                            <input type="number"
+                            id="animalWeight" 
+                            formControlName="animalWeight" class="form-control" 
+                            placeholder="Pet kilo "/>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="animalGender">Pet Cinsiyeti </label>
+                        <div class="form-group">
+                            <input type="text"
+                            id="animalGender" 
+                            formControlName="animalGender" class="form-control" 
+                            placeholder="Pet cinsiyeti "/>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="animalAge">Pet Yaş </label>
+                        <div class="form-group">
+                            <input type="text"
+                            id="animalAge" 
+                            formControlName="animalAge" class="form-control" 
+                            placeholder="Pet Yaş "/>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="animalImage">Pet Fotoğraf </label>
+                        <div class="form-group">
+                            <input type="text"
+                            id="animalImage" 
+                            formControlName="animalImage" class="form-control" 
+                            placeholder="Pet Fotoğrafı yükleyiniz "/>
+                        </div>
+                    </div>
+                    
+                    
+                   
+                    
+                    
+                    
+                </form>
+            </div>
+            <div class="card-footer"> 
+                <button class="btn btn-fill btn-primary" (click)="add()" >İlan Ekle</button>
+            </div>
+        </div>
+    </div>
+    
+</div>

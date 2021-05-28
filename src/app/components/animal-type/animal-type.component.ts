@@ -8,6 +8,7 @@ import { AnimalTypeService } from 'src/app/services/animal-type.service';
   styleUrls: ['./animal-type.component.css']
 })
 export class AnimalTypeComponent implements OnInit {
+  
   animalTypes:animalType[]=[];
   currentAnimalType:animalType;
   constructor(private animalTypeService:AnimalTypeService) { }

@@ -6,11 +6,15 @@
     <a href="#" class="list-group-item list-group-item-action">Kedi</a>
     
   </div>
-  <ul class="list-group">
+  
+<ul class="list-group">
     <li (click)="setCurrentAnimalType(animalType)" 
-    routerLink="/products/category/{{animalType.AnimalTypesId }}"
+    routerLink="/products/category/{{animalType.animalTypeId}}"
     *ngFor="let animalType of animalTypes"
-     [class]="getCurrentAnimalTypeClass(animalType) ">{{animalType.AnimalTypesName}}</li>
+     [class]="getCurrentAnimalTypeClass(animalType) ">{{animalType.animalTypeName}}</li>
     
   </ul> 
-  <h5 *ngIf=" currentAnimalType">{{ currentAnimalType.AnimalTypesName}} seçtiniz</h5>
+  <h5 *ngIf=" currentAnimalType">{{ currentAnimalType.animalTypeName}} seçtiniz</h5>
+
+ 
+  
