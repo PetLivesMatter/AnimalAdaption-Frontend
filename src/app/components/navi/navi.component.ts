@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navi',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navi.component.css']
 })
 export class NaviComponent implements OnInit {
-
-  constructor() { }
+  
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
   }
-
+  home(){
+    this.router.navigate([""])
+  }
+  login(){
+    this.router.navigate(["login"])
+  }
 }

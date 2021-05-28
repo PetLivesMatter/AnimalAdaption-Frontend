@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdvertisimentComponent } from './components/advertisiment/advertisiment.component';
 import { AnimalComponent } from './components/animal/animal.component';
 import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [
@@ -11,7 +12,8 @@ const routes: Routes = [
   {path:"pets",component:AnimalComponent},
   {path:"pets/petsType/:animalTypeId",component:AnimalComponent},
   {path:"pets/add",component:AdvertisimentComponent, canActivate:[LoginGuard]},
-  {path:"login",component:LoginComponent}
+  {path:"login",component:LoginComponent},
+  {path:"register",component:RegisterComponent}
 ];  
 
 @NgModule({
