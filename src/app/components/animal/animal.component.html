@@ -34,14 +34,14 @@
   </thead>
   <tbody >
     <tr *ngFor="let animal of Animals">
-      <th scope="row">#</th>
+      <th scope="row">{{animal.animalId}}</th>
       <td>{{animal.animalName}}</td>
-      <td>{{animal.animalTypesId}} </td>
-      
+      <td>{{animal.animalTypeId}} </td> <!-- fonksiyon lazım-->
       <td>{{animal.animalGender}}</td>
       <td>{{animal.animalAge}}</td>
       <td>{{animal.address}}</td>
     </tr>
+
   </tbody>
 </table>
   

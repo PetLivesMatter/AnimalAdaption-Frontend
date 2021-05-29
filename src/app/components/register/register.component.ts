@@ -40,7 +40,10 @@ export class RegisterComponent implements OnInit {
         localStorage.setItem("token",data.token)
         this.toastrService.success("kayıt olundu "," kayıt başarılı")
         this.routerService.navigate(["/"])
-
+        setTimeout(() => {
+          
+          window.location.reload()
+        }, 250);
         
       },(error)=>{
         this.toastrService.error("kayıt yapılamadı","kayıt başarısız")

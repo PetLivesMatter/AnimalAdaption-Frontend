@@ -27,6 +27,7 @@ export class AnimalTypeService {
   }
   getAnimalTypeById(Id:number):Observable<SingleResponseModel<animalType>>{
     let newPath=this.apiUrl+'animaltypes/getbyid?id='+Id
+    console.log(newPath)
     return this.httpClient.get<SingleResponseModel<animalType>>(newPath)
   }
 

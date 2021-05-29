@@ -32,7 +32,10 @@ export class LoginComponent implements OnInit {
         //localStorage.setItem("userId",data.token);
         this.toastrService.success("giriş yapıldı","başarılı")
         this.routerService.navigate(["/"])
-
+        setTimeout(() => {
+          
+          window.location.reload()
+        }, 250);
         
       },(error)=>{
         this.toastrService.error("giriş yapılamadı","başarısız")

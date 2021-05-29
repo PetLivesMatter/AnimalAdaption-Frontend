@@ -1,6 +1,6 @@
 export interface Animal{
     animalId:number;
-    animalTypesId:number;
+    animalTypeId:number;
     address:string;
     animalName:string;
     animalGender:string;

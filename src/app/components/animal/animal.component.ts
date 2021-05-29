@@ -13,7 +13,8 @@ import { AnimalService } from 'src/app/services/animal.service';
 export class AnimalComponent implements OnInit {
   Animals:Animal[]=[];
   addAnimalForm:FormGroup;
-  
+  animalTypes = new Map<number, string>()
+
   dataLoaded=false;
   filterText="";
   constructor(private animalService:AnimalService,
@@ -32,11 +33,18 @@ export class AnimalComponent implements OnInit {
     })    
     
   }
+
+  // deneme(id:number){
+  //   this.Animals.forEach(element => {
+  //     consoleelement.animalTypesId
+  //   });
+  // }
     getAnimals(){
         this.animalService.getAnimals().subscribe(response=>{
         this.Animals = response.data
         this.dataLoaded=true;
         console.log(this.Animals)
+        
         })
     }
     getAnimalsByAnimalType(animalTypeId:number){
@@ -58,10 +66,12 @@ export class AnimalComponent implements OnInit {
         Address:["",Validators.required]
       })
     }
-    getAnimalTypeById(Id:number){
-      this.animalTypeService.getAnimalTypeById(Id).subscribe((data)=>{
-        return data.data.animalTypeName
+    getAnimalTypeById(animalTypeId:number):string{
+      let name =""
+     this.animalTypeService.getAnimalTypeById(animalTypeId).subscribe((data)=>{
+      name =data.data.animalTypeName
       })
+      return name
     }
     rotatingAdvertisiment(){
 

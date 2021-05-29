@@ -20,6 +20,9 @@ export class AuthService {
     let newPath=this.apiUrl+"/register"
     return this.httpClient.post<TokenModel>(newPath,registerModel)
   }
+  logOut(){
+    localStorage.clear();
+  }
   isAuthenticated(){
     if(localStorage.getItem("token")){
       return true;

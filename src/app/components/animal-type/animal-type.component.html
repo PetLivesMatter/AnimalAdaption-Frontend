@@ -1,20 +1,26 @@
-<div class="list-group">
-  
-    <a href="#" class="list-group-item list-group-item-action active" aria-current="true"> Kategoriler</a>
-    <a href="#" class="list-group-item list-group-item-action"> Fil</a>
-    <a href="#" class="list-group-item list-group-item-action">Gecko</a>
-    <a href="#" class="list-group-item list-group-item-action">Kedi</a>
+   <div>
+
+    <ul class="list-group">
+      <li [class]="getAllAnimalTypeClass()" routerLink="/pets">Tüm Ürünler</li>
+      <li (click)="setCurrentAnimalType(animalType)" 
+      routerLink="pets/petsType/{{animalType.animalTypeId}}"
+      *ngFor="let animalType of animalTypes"
+      [class]="getCurrentAnimalTypeClass(animalType) "
+      >
+      {{animalType.animalTypeName}}</li>
+
+      <!--[class]="getCurrentAnimalTypeClass(animalType) " ram hatası alıyoruz-->
+      
+    </ul> 
+    <h5 *ngIf=" currentAnimalType">{{ currentAnimalType.animalTypeName}} seçtiniz</h5>
     
   </div>
-  
-<ul class="list-group">
+   <!--
     <li (click)="setCurrentAnimalType(animalType)" 
-    routerLink="/products/category/{{animalType.animalTypeId}}"
-    *ngFor="let animalType of animalTypes"
-     [class]="getCurrentAnimalTypeClass(animalType) ">{{animalType.animalTypeName}}</li>
-    
-  </ul> 
-  <h5 *ngIf=" currentAnimalType">{{ currentAnimalType.animalTypeName}} seçtiniz</h5>
+      routerLink="/animals/category/{{animalType.animalTypeId}}"
+      *ngFor="let animalType of animalTypes"
+       [class]="getCurrentAnimalTypeClass(animalType) ">{{animalType.animalTypeName}}</li>
+     --> 
 
  
   
