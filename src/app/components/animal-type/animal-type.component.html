@@ -1,19 +1,19 @@
    <div>
 
     <ul class="list-group">
-      <li [class]="getAllAnimalTypeClass()" routerLink="/pets">Tüm Ürünler</li>
+      <li [class]="getAllAnimalTypeClass()" (click)="resetCurrentAnimalType()" routerLink="/pets">Tüm Ürünler</li>
       <li (click)="setCurrentAnimalType(animalType)" 
       routerLink="pets/petsType/{{animalType.animalTypeId}}"
       *ngFor="let animalType of animalTypes"
-      [class]="getCurrentAnimalTypeClass(animalType) "
-      >
+      [class]="getCurrentAnimalTypeClass(animalType) ">
       {{animalType.animalTypeName}}</li>
 
+      <button type="button" (click)="isModalOpen = !isModalOpen" class="btn btn-primary my-5" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Pet Türü Ekle
+      </button>
       <!--[class]="getCurrentAnimalTypeClass(animalType) " ram hatası alıyoruz-->
       
-    </ul> 
-    <h5 *ngIf=" currentAnimalType">{{ currentAnimalType.animalTypeName}} seçtiniz</h5>
-    
+    </ul>     
   </div>
    <!--
     <li (click)="setCurrentAnimalType(animalType)" 
@@ -22,5 +22,30 @@
        [class]="getCurrentAnimalTypeClass(animalType) ">{{animalType.animalTypeName}}</li>
      --> 
 
- 
+     <div [class]="openModalClass()" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Pet Türü Ekle</h5>
+            <button (click)="isModalOpen = !isModalOpen" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="animalTypeAddForm">
+              <div > 
+                <p>Pet türü ekleyiniz</p>
+                <input formControlName="animalTypeName" type="text" placeholder="Pet türü giriniz.">
+              </div>
+              <div > 
+                <p>Tanımlı Id</p>
+                  <input formControlName="animalTypeId" type="number" placeholder="Pet türü Id giriniz.">
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button (click)="isModalOpen = !isModalOpen" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+              <button (click)="add()" type="button" class="btn btn-primary">Ekle</button>
+          </div>
+        </div>
+      </div>
+    </div>
   

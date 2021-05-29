@@ -36,7 +36,7 @@
     <tr *ngFor="let animal of Animals">
       <th scope="row">{{animal.animalId}}</th>
       <td>{{animal.animalName}}</td>
-      <td>{{animal.animalTypeId}} </td> <!-- fonksiyon lazım-->
+      <td>{{animalTypes.get(animal.animalTypeId)}} </td>
       <td>{{animal.animalGender}}</td>
       <td>{{animal.animalAge}}</td>
       <td>{{animal.address}}</td>
@@ -46,18 +46,7 @@
 </table>
   
 
-<div class="row">
-    <div class="col" >  <img width="100%"  src="./assets/doglivesmater.webp"></div>
-    <div class="col" >  <img width="100%"  src="./assets/doglivesmater.webp"></div>
-    <div class="col" >  <img width="100%"  src="./assets/doglivesmater.webp"></div>
-    <div class="col" >  <img width="100%"  src="./assets/doglivesmater.webp"></div>
-    <div class="col" >  <img width="100%"  src="./assets/doglivesmater.webp"></div>
- </div>
- <div class="row">
-  <div class="col" >  <img width="100%"  src="./assets/doglivesmater.webp"></div>
-  <div class="col" >  <img width="100%"  src="./assets/doglivesmater.webp"></div>
 
-  </div>
 
 
   

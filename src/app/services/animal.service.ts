@@ -26,8 +26,10 @@ export class AnimalService {
 
   
   addAnimal(animal: Animal): Observable<SingleResponseModel<Animal>> {
+    
+    
     return this.httpClient.post<SingleResponseModel<Animal>>(
-      this.apiUrl + 'animals/add',  
+      this.apiUrl + 'animals/add',   
       animal
     );
   }
@@ -46,7 +48,11 @@ export class AnimalService {
     animalTypeId: number
   ): Observable<ListResponseModel<Animal>> {
     let newPath =
-      this.apiUrl + 'animals/getbyanimaltype?animalTypeId=' + animalTypeId;
+      this.apiUrl + 'animaltypes/getbyid?id='+animalTypeId;
+    return this.httpClient.get<ListResponseModel<Animal>>(newPath);
+  }
+  getAllByAnimalTypesId(animalTypeId:number):Observable<ListResponseModel<Animal>>{
+    let newPath= this.apiUrl+'animals/getallbyanimaltypesid?id='+animalTypeId;
     return this.httpClient.get<ListResponseModel<Animal>>(newPath);
   }
 

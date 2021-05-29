@@ -26,19 +26,25 @@ export class AnimalComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params=>{
       if(params["animalTypeId"]){
-        this.getAnimalsByAnimalType(params["animalTypeId"])
+        this.getAllByAnimalTypesId(params["animalTypeId"])
       }else{
         this.getAnimals()
       }
     })    
-    
+    this.setAnimalsTypesMap();
   }
 
-  // deneme(id:number){
-  //   this.Animals.forEach(element => {
-  //     consoleelement.animalTypesId
-  //   });
-  // }
+  setAnimalsTypesMap() {
+    this.animalTypeService.getAnimalTypes().subscribe(res => {
+      console.log(res.data);
+      res.data.forEach((animalType) => {
+        this.animalTypes.set(animalType.animalTypeId, animalType.animalTypeName);
+      })
+      
+      
+    })
+  }
+
     getAnimals(){
         this.animalService.getAnimals().subscribe(response=>{
         this.Animals = response.data
@@ -49,6 +55,8 @@ export class AnimalComponent implements OnInit {
     }
     getAnimalsByAnimalType(animalTypeId:number){
       this.animalService.getAnimalsByAnimalType(animalTypeId).subscribe(response=>{
+        console.log(response.data);
+        
       this.Animals = response.data
       this.dataLoaded=true;
       })
@@ -76,5 +84,11 @@ export class AnimalComponent implements OnInit {
     rotatingAdvertisiment(){
 
       this.router.navigate(["pets/add"])
+    }
+    getAllByAnimalTypesId(animalTypeId:number){
+      this.animalService.getAllByAnimalTypesId(animalTypeId).subscribe((data)=>{
+        this.Animals = data.data;
+        
+      })
     }
 }

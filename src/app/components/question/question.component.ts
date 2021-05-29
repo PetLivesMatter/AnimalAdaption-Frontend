@@ -24,8 +24,8 @@ export class QuestionComponent implements OnInit {
   ngOnInit(): void {
     this.getQuestions();
     this.createAnswerAddForm();
-    this.addAnswer();
     this.createQuestionAddForm();
+    this.getAnswers();
   }
   createQuestionAddForm(){
     this.questionAddForm=this.formBuilder.group({
@@ -44,41 +44,47 @@ export class QuestionComponent implements OnInit {
     this.answerAddForm=this.formBuilder.group({
       content:["",Validators.required],
       /*answerId:-1,
-      questionId:-1,
-      userId:-1,*/
+      questionId:-1,*/
+      userId: 1,
     })
   }
 
   getQuestions(){
     this.questionAndAnswerService.getQuestions().subscribe(res =>{
-      this.Questions = res.data;
+      this.Questions = res.data.reverse();
     })
   }
-  getAnswer(){
+  getAnswers(){
     this.questionAndAnswerService.getAnswers().subscribe(res=>{
-      this.Answers= res.data;
+      console.log(res.data);
+
+      this.Answers = res.data;
     })
   }
   addQuestion(){
     if(this.questionAddForm.valid){
-      let questionForm=this.questionAddForm.value
+      let questionForm:questionModel=this.questionAddForm.value;
       //let userId:number =questionModel.userId
       this.questionAndAnswerService.addQuestion(questionForm).subscribe((res)=>{
         this.toastrService.success("Soru eklendi","Başarılı")
+        this.Questions.push(questionForm);
+      }, (error)=>{
+        this.toastrService.warning("soru eklenemedi","Başarısız")
       })
     }else{
       this.toastrService.warning("Soru Eklenemedi","Uyarı Başarısız")
     }
     
   }
-  addAnswer(){
+  addAnswer(questionId: number){
     if(this.answerAddForm.valid){
-      let answerForm= this.answerAddForm.value
+      let answerForm:answerModel= this.answerAddForm.value;
+      answerForm.questionId = questionId;
       //userId+questionId düzenlenicek
       this.questionAndAnswerService.addAnswer(answerForm).subscribe((res)=>{
         this.toastrService.success("Yanıt eklendi","Başarılı")
+        this.Answers.push(answerForm);
       })
-
     }else{
       this.toastrService.warning("Yanıt eklenemedi","Uyarı Başarısız")
     }

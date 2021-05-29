@@ -31,8 +31,10 @@ export class QuestionAndAnswerService {
       this.apiUrl + 'answers/getbyid' + answersId;
     return this.httpClient.get<SingleResponseModel<answerModel>>(newPath);
   }
-  addQuestion(questionModel:questionModel ): Observable<ResponseModel> {
-    return this.httpClient.post<ResponseModel>(
+  addQuestion(questionModel:questionModel ): Observable<SingleResponseModel<questionModel>> {
+    console.log(questionModel);
+    
+    return this.httpClient.post<SingleResponseModel<questionModel>>(
       this.apiUrl + 'questions/add',questionModel
     );
   }

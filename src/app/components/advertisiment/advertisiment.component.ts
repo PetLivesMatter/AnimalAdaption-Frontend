@@ -29,12 +29,16 @@ export class AdvertisimentComponent implements OnInit {
   add(){
     console.log(this.adversitimentAddForm.value)
     if(this.adversitimentAddForm.valid){
-      let animal:Animal = this.adversitimentAddForm.value
+      let animal:Animal = this.adversitimentAddForm.value;
+      console.log(animal);
+      
       this.animalService.addAnimal(animal).subscribe((data)=>{
-        console.log(data)
+        this.toastrService.success("İlan eklendi","Başarılı")
       }, (error)=>{
-        console.log(error)
+        this.toastrService.warning("İlan eklenemedi","Başarısız")
       })
+    }else{
+      this.toastrService.warning("İlan eklenemedi","Başarısız")
     }
 
 

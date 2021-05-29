@@ -9,21 +9,29 @@
 		<h1>Sorular</h1>
 	</div>
 
-	<div class="py-4">
-		<div *ngFor="let question of Questions">
+	<div>
+		<div class="my-5" *ngFor="let question of Questions">
 			<div class="fs-3 fw-bolder card-header">
 				{{question.title}}
 			</div>
 			<div class="p-3 bg-light">
 				{{question.content}}
 			</div>
-			<div *ngFor="let answer of Answers"> YANITLAR</div>
+      <div class="px-5 bg-light">
+        <div *ngFor="let answer of Answers"> 
+          <div *ngIf="answer.questionId == question.questionId">
+            <span class="fw-bolder">Cevap: </span>{{answer.content}}
+          </div>
+        </div>
+      </div>
 				
-		<!-- -->	
-			<div class="input-group p-3 bg-light">
-				<input type="text" class="form-control" placeholder="Yorum yap" aria-describedby="button-addon2"><!--ng model ata-->
-				<button class="btn btn-primary" type="button" id="button-addon2">Cevap Gönder</button>
-			</div>
+      <!-- -->
+      <form [formGroup]="answerAddForm">
+        <div class="input-group p-3 bg-light">
+          <input type="text" class="form-control" formControlName="content" placeholder="Yorum yap" aria-describedby="button-addon2"><!--ng model ata-->
+          <button class="btn btn-primary" type="button" id="button-addon2" (click)="addAnswer(question.questionId)">Cevap Gönder</button>
+        </div>
+      </form>
 			
 		</div>
 	</div>
@@ -31,22 +39,22 @@
 
 	
 	<div class="py-4">
-		<form  [formGroup]="answerAddForm"  >
+		<form  [formGroup]="questionAddForm"  >
 		
 		<h1 class="fs-3 fw-bolder py-3">Soru Sor </h1>
 		<div>
-			<div class="input-group" formControlName="title">
-				<textarea class="form-control" aria-label="With textarea"></textarea> <!--ng model ata-->
+			<div class="input-group" >
+				<input class="form-control" placeholder="Başlık" formControlName="title" aria-label="With textarea"> <!--ng model ata-->
 			</div>
 			<br>
-			<div class="input-group" formControlName="content">
-				<textarea class="form-control" aria-label="With textarea"></textarea> <!--ng model ata-->
+			<div class="input-group">
+				<textarea placeholder="İçerik" class="form-control" formControlName="content" aria-label="With textarea"></textarea> <!--ng model ata-->
 			</div>
 			<div class="w-100 d-flex justify-content-end py-3">
 				<button class="btn btn-primary" type="button" (click)="addQuestion()">Soru Gönder </button> <!--click add question-->
 			</div>
 		</div>
-		</form>
+		</form> 
 	
 	</div>
 	

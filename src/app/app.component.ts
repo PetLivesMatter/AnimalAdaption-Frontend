@@ -9,10 +9,11 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'AnimalAdaption-Frontend';
-  isLoginContainer:boolean=window.location.pathname!=="/login";
+  hideSidebarLocs = ['/login', '/register', '/question'];
+  isLoginContainer:boolean = this.hideSidebarLocs.includes(window.location.pathname);
   ngOnInit(): void {
     this.router.events.subscribe(val=>{
-      if(window.location.pathname==="/login"||window.location.pathname==="/register"){
+      if(this.hideSidebarLocs.includes(window.location.pathname)){
         this.isLoginContainer=false;
       }else{  
         this.isLoginContainer=true;

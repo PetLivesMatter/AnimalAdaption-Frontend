@@ -15,7 +15,7 @@ const routes: Routes = [
   {path:"pets/add",component:AdvertisimentComponent, canActivate:[LoginGuard]},
   {path:"login",component:LoginComponent},
   {path:"register",component:RegisterComponent},
-  {path:"question",component:QuestionComponent}
+  {path:"question",component:QuestionComponent, canActivate:[LoginGuard]}
 ];  
 
 
