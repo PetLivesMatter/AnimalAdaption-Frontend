@@ -1,7 +1,14 @@
 <div class="container">
+	<!--
+	<form  [formGroup]="createQuestionAddForm" >
+
+	</form>
+	-->
+	
 	<div class="py-3">
 		<h1>Sorular</h1>
 	</div>
+
 	<div class="py-4">
 		<div *ngFor="let question of Questions">
 			<div class="fs-3 fw-bolder card-header">
@@ -10,21 +17,37 @@
 			<div class="p-3 bg-light">
 				{{question.content}}
 			</div>
+			<div *ngFor="let answer of Answers"> YANITLAR</div>
+				
+		<!-- -->	
 			<div class="input-group p-3 bg-light">
 				<input type="text" class="form-control" placeholder="Yorum yap" aria-describedby="button-addon2"><!--ng model ata-->
 				<button class="btn btn-primary" type="button" id="button-addon2">Cevap Gönder</button>
 			</div>
+			
 		</div>
 	</div>
+	
+
+	
 	<div class="py-4">
-		<h1 class="fs-3 fw-bolder py-3">Soru Sor: </h1>
+		<form  [formGroup]="answerAddForm"  >
+		
+		<h1 class="fs-3 fw-bolder py-3">Soru Sor </h1>
 		<div>
-			<div class="input-group">
+			<div class="input-group" formControlName="title">
+				<textarea class="form-control" aria-label="With textarea"></textarea> <!--ng model ata-->
+			</div>
+			<br>
+			<div class="input-group" formControlName="content">
 				<textarea class="form-control" aria-label="With textarea"></textarea> <!--ng model ata-->
 			</div>
 			<div class="w-100 d-flex justify-content-end py-3">
-				<button class="btn btn-primary" type="button">Soru Gönder</button> <!--click add question-->
+				<button class="btn btn-primary" type="button" (click)="addQuestion()">Soru Gönder </button> <!--click add question-->
 			</div>
 		</div>
+		</form>
+	
 	</div>
+	
 </div>

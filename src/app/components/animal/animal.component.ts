@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import{Animal} from 'src/app/models/animal';
+import { AnimalTypeService } from 'src/app/services/animal-type.service';
 import { AnimalService } from 'src/app/services/animal.service';
 
 @Component({
@@ -15,7 +16,8 @@ export class AnimalComponent implements OnInit {
   
   dataLoaded=false;
   filterText="";
-  constructor(private animalService:AnimalService, 
+  constructor(private animalService:AnimalService,
+    private animalTypeService:AnimalTypeService, 
     private activatedRoute:ActivatedRoute,
     private formBuilder:FormBuilder,
     private router:Router) { }
@@ -54,6 +56,11 @@ export class AnimalComponent implements OnInit {
         animalGender:["",Validators.required],
         animalAge:["",Validators.required],
         Address:["",Validators.required]
+      })
+    }
+    getAnimalTypeById(Id:number){
+      this.animalTypeService.getAnimalTypeById(Id).subscribe((data)=>{
+        return data.data.animalTypeName
       })
     }
     rotatingAdvertisiment(){

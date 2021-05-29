@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
       this.authService.login(loginModel).subscribe((data)=>{
         //console.log(data)
         localStorage.setItem("token",data.token);
-        //localStorage.setItem("userId",data.id);
+        //localStorage.setItem("userId",data.token);
         this.toastrService.success("giriş yapıldı","başarılı")
         this.routerService.navigate(["/"])
 
