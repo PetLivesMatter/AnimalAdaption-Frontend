@@ -1,7 +1,7 @@
    <div>
 
     <ul class="list-group">
-      <li [class]="getAllAnimalTypeClass()" (click)="resetCurrentAnimalType()" routerLink="/pets">Tüm Ürünler</li>
+      <li [class]="getAllAnimalTypeClass()" (click)="resetCurrentAnimalType()" routerLink="/pets">Tüm İlanlar</li>
       <li (click)="setCurrentAnimalType(animalType)" 
       routerLink="pets/petsType/{{animalType.animalTypeId}}"
       *ngFor="let animalType of animalTypes"
